@@ -165,6 +165,15 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.xr.oculus": {
+      "version": "3.3.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.xr.management": "4.2.0"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.vrmada.ultimatexr-unity": {
       "version": "https://github.com/VRMADA/ultimatexr-unity.git",
       "depth": 0,
