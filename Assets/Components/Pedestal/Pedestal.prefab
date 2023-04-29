@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7938384823964945550}
   - component: {fileID: 7060580883080737832}
   - component: {fileID: 3140686695353643048}
+  - component: {fileID: 2874312351263890330}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: Untagged
@@ -97,6 +98,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2874312351263890330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 606511252728115610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ccd95984a6d5f4a9f5c351b85fc29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1676335500806773538
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +155,7 @@ GameObject:
   - component: {fileID: 1018097219789358162}
   - component: {fileID: 8657129907057648107}
   - component: {fileID: 8260705958376410975}
+  - component: {fileID: 7464050667107429154}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: Untagged
@@ -227,6 +241,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7464050667107429154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1775132761077905311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ccd95984a6d5f4a9f5c351b85fc29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3296337051617299984
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +265,7 @@ GameObject:
   - component: {fileID: 7906616845931842184}
   - component: {fileID: 8017959121092846746}
   - component: {fileID: 6223245483644456898}
+  - component: {fileID: 121792961095595468}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -324,6 +351,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &121792961095595468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3296337051617299984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ccd95984a6d5f4a9f5c351b85fc29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4049784776143616773
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +375,7 @@ GameObject:
   - component: {fileID: 5555236595845311477}
   - component: {fileID: 8795798005503642971}
   - component: {fileID: 2189927501537766607}
+  - component: {fileID: 441975432948986111}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -421,6 +461,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &441975432948986111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4049784776143616773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ccd95984a6d5f4a9f5c351b85fc29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5887033687170149418
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,6 +485,7 @@ GameObject:
   - component: {fileID: 424424445614329570}
   - component: {fileID: 652540001487709802}
   - component: {fileID: 1535395372700729121}
+  - component: {fileID: 650493219065381944}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: Untagged
@@ -518,6 +571,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &650493219065381944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5887033687170149418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ccd95984a6d5f4a9f5c351b85fc29b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6084624503384078253
 GameObject:
   m_ObjectHideFlags: 0
