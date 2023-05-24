@@ -13,6 +13,12 @@ This project utilizes the UltimateXR framework in a Unity project to start devel
 
 You will now a have a scene full of samples to play with! The folder is mobile optimized and will run fine on Quest.
 
+## Custom Additions
+* CustomHandScanner: Can be attached to anything you like instead of being hardcoded to work with the ArmoredDoor.
+* AudioManager: Easily configurable audio manager
+* GrabIndicator: shows a little circle on grabbables when they are grababble.
+* SnapZone: A preconfigured anchor that can hold all your items.
+
 ## Licenses
 
 * Audio examples have been retrieved from Zapsplat:
