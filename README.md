@@ -12,3 +12,8 @@ This project utilizes the UltimateXR framework in a Unity project to start devel
 2. Press `import` on `full scene`.
 
 You will now a have a scene full of samples to play with! The folder is mobile optimized and will run fine on Quest.
+
+## Licenses
+
+* Audio examples have been retrieved from Zapsplat:
+	* https://www.zapsplat.com/music/transfixed-a-contemporary-evolving-collection-of-ethnic-and-western-strings-with-mallets-and-vocal-textures/
