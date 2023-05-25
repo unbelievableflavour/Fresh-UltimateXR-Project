@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -10,8 +8,10 @@ public class AudioManagerClip : MonoBehaviour
     public AudioClip audioClip;
     public AudioSourceSettings audioSourceSettings;
 
-    public void Start() {
-        if(!playInstantly) {
+    public void Start()
+    {
+        if (!playInstantly)
+        {
             return;
         }
 
