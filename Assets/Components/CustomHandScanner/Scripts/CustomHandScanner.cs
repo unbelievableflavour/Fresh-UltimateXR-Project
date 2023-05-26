@@ -24,24 +24,24 @@ namespace UltimateXR.Examples.FullScene.Doors
     {
         #region Inspector Properties/Serialized Fields
 
-        [SerializeField]                     private Renderer       _validLight;
-        [SerializeField]                     private Renderer       _invalidLight;
-        [SerializeField]                     private Renderer       _scannerBeam;
-        [SerializeField]                     private Vector3        _scannerBeamTopLocalPos;
-        [SerializeField]                     private Vector3        _scannerBeamBottomLocalPos;
-        [SerializeField]                     private int            _beamCount      = 5;
-        [SerializeField] [Range(0.0f, 1.0f)] private float          _beamTrailDelay = 0.1f;
-        [SerializeField]                     private UxrEasing      _beamEeasing    = UxrEasing.EaseInOutQuint;
-        [SerializeField]                     private Vector3        _beamMaxScale   = Vector3.one;
-        [SerializeField]                     private Renderer       _handRendererLeft;
-        [SerializeField]                     private Renderer       _handRendererRight;
-        [SerializeField]                     private UxrHandSide    _defaultHandSide = UxrHandSide.Right;
-        [SerializeField]                     private BoxCollider    _handBoxValidPos;
-        [SerializeField]                     private float          _scanSeconds   = 1.5f;
-        [SerializeField]                     private float          _resultSeconds = 2.0f;
-        [SerializeField]                     private UxrAudioSample _audioScan;
-        [SerializeField]                     private UxrAudioSample _audioError;
-        [SerializeField]                     private UxrAudioSample _audioOk;
+        [SerializeField] private readonly Renderer _validLight;
+        [SerializeField] private readonly Renderer _invalidLight;
+        [SerializeField] private readonly Renderer _scannerBeam;
+        [SerializeField] private readonly Vector3 _scannerBeamTopLocalPos;
+        [SerializeField] private readonly Vector3 _scannerBeamBottomLocalPos;
+        [SerializeField] private readonly int _beamCount = 5;
+        [SerializeField][Range(0.0f, 1.0f)] private readonly float _beamTrailDelay = 0.1f;
+        [SerializeField] private readonly UxrEasing _beamEeasing = UxrEasing.EaseInOutQuint;
+        [SerializeField] private Vector3 _beamMaxScale = Vector3.one;
+        [SerializeField] private readonly Renderer _handRendererLeft;
+        [SerializeField] private readonly Renderer _handRendererRight;
+        [SerializeField] private readonly UxrHandSide _defaultHandSide = UxrHandSide.Right;
+        [SerializeField] private readonly BoxCollider _handBoxValidPos;
+        [SerializeField] private readonly float _scanSeconds = 1.5f;
+        [SerializeField] private readonly float _resultSeconds = 2.0f;
+        [SerializeField] private readonly UxrAudioSample _audioScan;
+        [SerializeField] private readonly UxrAudioSample _audioError;
+        [SerializeField] private readonly UxrAudioSample _audioOk;
 
         #endregion
 
@@ -66,10 +66,10 @@ namespace UltimateXR.Examples.FullScene.Doors
         {
             base.Awake();
 
-            _colorValid   = _validLight.sharedMaterial.GetColor(UxrConstants.Shaders.StandardColorVarName);
+            _colorValid = _validLight.sharedMaterial.GetColor(UxrConstants.Shaders.StandardColorVarName);
             _colorInvalid = _invalidLight.sharedMaterial.GetColor(UxrConstants.Shaders.StandardColorVarName);
-            _handSide     = _defaultHandSide;
-            _beamScale    = _scannerBeam.transform.localScale;
+            _handSide = _defaultHandSide;
+            _beamScale = _scannerBeam.transform.localScale;
 
             _beams.Add(_scannerBeam);
 
@@ -86,13 +86,13 @@ namespace UltimateXR.Examples.FullScene.Doors
         {
             base.OnEnable();
 
-            _scanReady            = true;
-            _validLight.enabled   = false;
+            _scanReady = true;
+            _validLight.enabled = false;
             _invalidLight.enabled = false;
 
-            _handRendererLeft.enabled         = _defaultHandSide == UxrHandSide.Left;
-            _handRendererRight.enabled        = _defaultHandSide == UxrHandSide.Right;
-            _handRendererLeft.material.color  = ColorExt.ColorAlpha(_handRendererLeft.material.color,  _defaultHandSide == UxrHandSide.Left ? 1.0f : 0.0f);
+            _handRendererLeft.enabled = _defaultHandSide == UxrHandSide.Left;
+            _handRendererRight.enabled = _defaultHandSide == UxrHandSide.Right;
+            _handRendererLeft.material.color = ColorExt.ColorAlpha(_handRendererLeft.material.color, _defaultHandSide == UxrHandSide.Left ? 1.0f : 0.0f);
             _handRendererRight.material.color = ColorExt.ColorAlpha(_handRendererRight.material.color, _defaultHandSide == UxrHandSide.Right ? 1.0f : 0.0f);
 
             EnableBeams(false);
@@ -105,8 +105,8 @@ namespace UltimateXR.Examples.FullScene.Doors
         {
             base.OnEnable();
 
-            _scanReady            = true;
-            _validLight.enabled   = false;
+            _scanReady = true;
+            _validLight.enabled = false;
             _invalidLight.enabled = false;
             EnableBeams(false);
         }
@@ -128,13 +128,13 @@ namespace UltimateXR.Examples.FullScene.Doors
                 if (UxrAvatar.LocalAvatar.GetHandBone(UxrHandSide.Left).position.IsInsideBox(_handBoxValidPos))
                 {
                     _scanTimer = 0.0f;
-                    _handSide  = UxrHandSide.Left;
+                    _handSide = UxrHandSide.Left;
                     _audioScan.Play(transform.position);
                 }
                 else if (UxrAvatar.LocalAvatar.GetHandBone(UxrHandSide.Right).position.IsInsideBox(_handBoxValidPos))
                 {
                     _scanTimer = 0.0f;
-                    _handSide  = UxrHandSide.Right;
+                    _handSide = UxrHandSide.Right;
                     _audioScan.Play(transform.position);
                 }
             }
@@ -152,21 +152,18 @@ namespace UltimateXR.Examples.FullScene.Doors
                         for (int i = 0; i < _beams.Count; ++i)
                         {
                             float beamStartTime = i / (_beams.Count == 1 ? 1.0f : _beams.Count - 1.0f) * _beamTrailDelay * _scanSeconds;
-                            float beamDuration  = _scanSeconds - _beamTrailDelay;
-                            float t             = Mathf.Clamp01((_scanTimer - beamStartTime) / beamDuration);
-                            float tScale        = 1.0f - Mathf.Abs(t - 0.5f) * 2.0f;
+                            float beamDuration = _scanSeconds - _beamTrailDelay;
+                            float t = Mathf.Clamp01((_scanTimer - beamStartTime) / beamDuration);
+                            float tScale = 1.0f - (Mathf.Abs(t - 0.5f) * 2.0f);
                             _beams[i].transform.localPosition = Vector3.Lerp(_scannerBeamTopLocalPos, _scannerBeamBottomLocalPos, UxrInterpolator.GetInterpolationFactor(t, _beamEeasing));
-                            _beams[i].transform.localScale    = Vector3.Lerp(_beamScale,              _beamMaxScale,              Mathf.Pow(tScale, 8.0f));
+                            _beams[i].transform.localScale = Vector3.Lerp(_beamScale, _beamMaxScale, Mathf.Pow(tScale, 8.0f));
                         }
 
                         if (_scanTimer > _scanSeconds)
                         {
                             ProcessScanResult(UxrAvatar.LocalAvatar, _handSide, true);
 
-                            if (onValidEvent != null)
-                            {
-                                onValidEvent.Invoke();
-                            }
+                            onValidEvent?.Invoke();
                         }
                     }
                     else
@@ -188,7 +185,7 @@ namespace UltimateXR.Examples.FullScene.Doors
             {
                 if (_handRendererRight.enabled)
                 {
-                    float rightAlpha = _handRendererRight.material.color.a - Time.deltaTime * HandAlphaSwitchSpeed;
+                    float rightAlpha = _handRendererRight.material.color.a - (Time.deltaTime * HandAlphaSwitchSpeed);
                     _handRendererRight.material.color = ColorExt.ColorAlpha(_handRendererRight.material.color, Mathf.Clamp01(rightAlpha));
 
                     if (rightAlpha < 0.0f)
@@ -202,13 +199,13 @@ namespace UltimateXR.Examples.FullScene.Doors
                     _handRendererLeft.enabled = true;
                 }
 
-                _handRendererLeft.material.color = ColorExt.ColorAlpha(_handRendererLeft.material.color, Mathf.Clamp01(_handRendererLeft.material.color.a + Time.deltaTime * HandAlphaSwitchSpeed));
+                _handRendererLeft.material.color = ColorExt.ColorAlpha(_handRendererLeft.material.color, Mathf.Clamp01(_handRendererLeft.material.color.a + (Time.deltaTime * HandAlphaSwitchSpeed)));
             }
             else
             {
                 if (_handRendererLeft.enabled)
                 {
-                    float leftAlpha = _handRendererLeft.material.color.a - Time.deltaTime * HandAlphaSwitchSpeed;
+                    float leftAlpha = _handRendererLeft.material.color.a - (Time.deltaTime * HandAlphaSwitchSpeed);
                     _handRendererLeft.material.color = ColorExt.ColorAlpha(_handRendererLeft.material.color, Mathf.Clamp01(leftAlpha));
 
                     if (leftAlpha < 0.0f)
@@ -222,7 +219,7 @@ namespace UltimateXR.Examples.FullScene.Doors
                     _handRendererRight.enabled = true;
                 }
 
-                _handRendererRight.material.color = ColorExt.ColorAlpha(_handRendererRight.material.color, Mathf.Clamp01(_handRendererRight.material.color.a + Time.deltaTime * HandAlphaSwitchSpeed));
+                _handRendererRight.material.color = ColorExt.ColorAlpha(_handRendererRight.material.color, Mathf.Clamp01(_handRendererRight.material.color.a + (Time.deltaTime * HandAlphaSwitchSpeed)));
             }
         }
 
@@ -256,8 +253,8 @@ namespace UltimateXR.Examples.FullScene.Doors
             {
                 _audioOk.Play(transform.position);
                 _validLight.enabled = true;
-                UxrAnimatedMaterial.AnimateBlinkColor(_validLight.gameObject,
-                                                      UxrConstants.Shaders.StandardColorVarName,
+                _ = UxrAnimatedMaterial.AnimateBlinkColor(_validLight.gameObject,
+                                                    UxrConstants.Shaders.StandardColorVarName,
                                                       _colorValid.WithAlpha(0.0f),
                                                       _colorValid,
                                                       UxrAnimatedMaterial.DefaultBlinkFrequency,
@@ -265,7 +262,7 @@ namespace UltimateXR.Examples.FullScene.Doors
                                                       UxrMaterialMode.InstanceOnly,
                                                       () =>
                                                       {
-                                                          _scanReady          = true;
+                                                          _scanReady = true;
                                                           _validLight.enabled = false;
                                                       });
             }
@@ -273,7 +270,7 @@ namespace UltimateXR.Examples.FullScene.Doors
             {
                 _audioError.Play(transform.position);
                 _invalidLight.enabled = true;
-                UxrAnimatedMaterial.AnimateBlinkColor(_invalidLight.gameObject,
+                _ = UxrAnimatedMaterial.AnimateBlinkColor(_invalidLight.gameObject,
                                                       UxrConstants.Shaders.StandardColorVarName,
                                                       _colorInvalid.WithAlpha(0.0f),
                                                       _colorInvalid,
@@ -282,7 +279,7 @@ namespace UltimateXR.Examples.FullScene.Doors
                                                       UxrMaterialMode.InstanceOnly,
                                                       () =>
                                                       {
-                                                          _scanReady            = true;
+                                                          _scanReady = true;
                                                           _invalidLight.enabled = false;
                                                       });
             }
@@ -300,14 +297,14 @@ namespace UltimateXR.Examples.FullScene.Doors
         /// </summary>
         private const float HandAlphaSwitchSpeed = 4.0f;
 
-        private readonly List<Renderer> _beams = new List<Renderer>();
+        private readonly List<Renderer> _beams = new();
 
-        private bool        _scanReady = true;
-        private float       _scanTimer = -1.0f;
-        private Vector3     _beamScale;
+        private bool _scanReady = true;
+        private float _scanTimer = -1.0f;
+        private Vector3 _beamScale;
         private UxrHandSide _handSide;
-        private Color       _colorValid;
-        private Color       _colorInvalid;
+        private Color _colorValid;
+        private Color _colorInvalid;
 
         #endregion
     }

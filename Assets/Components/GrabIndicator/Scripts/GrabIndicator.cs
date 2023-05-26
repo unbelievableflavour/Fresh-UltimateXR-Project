@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class GrabIndicator : MonoBehaviour
 {
-    Transform mainCam;
+    private Transform mainCam;
 
-    void Update()
+    private void Update()
     {
         AssignCamera();
 

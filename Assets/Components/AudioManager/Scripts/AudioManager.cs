@@ -11,7 +11,7 @@ public enum Streams
 public class AudioManager : MonoBehaviour
 {
     public AudioMixer audioMixer;
-    private readonly Dictionary<AudioMixerGroup, AudioSource> groupSourceDictionary = new Dictionary<AudioMixerGroup, AudioSource>();
+    private readonly Dictionary<AudioMixerGroup, AudioSource> groupSourceDictionary = new();
 
     // Singleton instance
     public static AudioManager Instance = null;
